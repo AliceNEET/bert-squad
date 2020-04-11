@@ -1,0 +1,6 @@
+transformers
+tqdm
+glob
+numpy
+tensorboardX
+tensorboard
