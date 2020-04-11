@@ -9,8 +9,6 @@ WORKDIR /home/squad
 
 # step4 安装依赖
 RUN pip install -r requirements.txt
-RUN pip install -U pytorch
-RUN pip install -U torchvision
 
 # step5 设置容器启动时的运行命令，这里我们直接运行python程序
 ENTRYPOINT ["bash", "start.sh"]
