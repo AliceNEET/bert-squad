@@ -27,9 +27,11 @@ if [ ! -d "./bert-base-cased" ]; then
 fi
 
 wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json
+mv ./bert-base-cased/bert-base-cased-config.json ./bert-base-cased/config.json
 wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt
+mv ./bert-base-cased/bert-base-cased-vocab.txt ./bert-base-cased/vocab.txt
 wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-large-uncased-pytorch_model.bin
-
+mv ./bert-base-cased/bert-large-uncased-pytorch_model.bin ./bert-base-cased/pytorch_model.bin
 
 export SQUAD_DIR=./data/
 export MODEL_PATH=./bert-base-cased
