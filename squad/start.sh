@@ -6,7 +6,7 @@ eva_file = "./data/evaluate-v2.0.py"
 
 #如果文件夹不存在，创建文件夹
 if [ ! -d "./data" ]; then
-  mkdir /myfolder
+  mkdir ./data
 fi
 
 if [ ! -f "$train_file" ]; then
@@ -19,15 +19,24 @@ fi
 
 if [ ! -f "$eva_file" ]; then
   wget -i -p ./data/ https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
-    mv ./data/index.html ./data/evaluate-v2.0.py
+  mv ./data/index.html ./data/evaluate-v2.0.py
 fi
+
+if [ ! -d "./bert-base-cased" ]; then
+  mkdir ./bert-base-cased
+fi
+
+wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-config.json
+wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-cased-vocab.txt
+wget -i -p ./bert-base-cased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-large-uncased-pytorch_model.bin
 
 
 export SQUAD_DIR=./data/
+export MODEL_PATH=./bert-base-cased
 
 python run_squad.py \
   --model_type bert \
-  --model_name_or_path bert-base-cased \
+  --model_name_or_path $MODEL_PATH \
   --do_train \
   --do_eval \
   --version_2_with_negative \
