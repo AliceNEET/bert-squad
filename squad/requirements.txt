@@ -3,5 +3,3 @@ tqdm
 numpy
 tensorboardX
 tensorboard
-torch
-torchvision
