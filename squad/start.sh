@@ -10,15 +10,15 @@ if [ ! -d "./data" ]; then
 fi
 
 if [ ! -f "$train_file" ]; then
-  wget -i -p ./data/ https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v2.0.json
+  wget -ip ./data/ https://rajpurkar.github.io/SQuAD-explorer/dataset/train-v2.0.json
 fi
 
 if [ ! -f "$dev_file" ]; then
-  wget -i -p ./data/ https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v2.0.json
+  wget -ip ./data/ https://rajpurkar.github.io/SQuAD-explorer/dataset/dev-v2.0.json
 fi
 
 if [ ! -f "$eva_file" ]; then
-  wget -i -p ./data/ https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
+  wget -ip ./data/ https://worksheets.codalab.org/rest/bundles/0x6b567e1cf2e041ec80d7098f031c5c9e/contents/blob/
   mv ./data/index.html ./data/evaluate-v2.0.py
 fi
 
@@ -26,11 +26,11 @@ if [ ! -d "./bert-base-uncased" ]; then
   mkdir ./bert-base-uncased
 fi
 
-wget -i -p ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json
+wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json
 mv ./bert-base-uncased/bert-base-uncased-config.json ./bert-base-uncased/config.json
-wget -i -p ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt
+wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt
 mv ./bert-base-uncased/bert-base-uncased-vocab.txt ./bert-base-uncased/vocab.txt
-wget -i -p ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin
+wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin
 mv ./bert-base-uncased/bert-base-uncased-pytorch_model.bin ./bert-base-uncased/pytorch_model.bin
 
 export SQUAD_DIR=./data/
