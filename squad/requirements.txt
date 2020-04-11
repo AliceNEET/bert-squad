@@ -1,6 +1,7 @@
 transformers
 tqdm
-glob
 numpy
 tensorboardX
 tensorboard
+torch
+torchvision
