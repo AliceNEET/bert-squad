@@ -1,5 +1,5 @@
 # step1: 基础镜像使用tensorflow-gpu，当然，你也可以使用python作为基础镜像，后面再安装tensorflow-gpu的依赖
-FROM python:3.7.7
+FROM hub.data.wust.edu.cn:30880/library/pytorch:1.1.0-cuda10.0-cudnn7.5-devel
 
 # step2: 将工程下面的机器学习相关的文件（这里是mnist文件夹）复制到容器某个目录中，例如：/home/mnist
 COPY ./squad /home/squad
