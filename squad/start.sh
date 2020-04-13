@@ -28,7 +28,7 @@ export MODEL_PATH=/pretrain_model/bert-base-uncased
 
 python run_squad.py \
   --model_type bert \
-  --model_name_or_path bert-base-uncased \
+  --model_name_or_path $MODEL_PATH \
   --do_train \
   --do_eval \
   --version_2_with_negative \
