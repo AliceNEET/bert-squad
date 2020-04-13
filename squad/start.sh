@@ -22,19 +22,9 @@ if [ ! -f "$eva_file" ]; then
   mv ./data/index.html ./data/evaluate-v2.0.py
 fi
 
-if [ ! -d "./bert-base-uncased" ]; then
-  mkdir ./bert-base-uncased
-fi
-
-wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-config.json
-mv ./bert-base-uncased/bert-base-uncased-config.json ./bert-base-uncased/config.json
-wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-vocab.txt
-mv ./bert-base-uncased/bert-base-uncased-vocab.txt ./bert-base-uncased/vocab.txt
-wget -ip ./bert-base-uncased/ https://s3.amazonaws.com/models.huggingface.co/bert/bert-base-uncased-pytorch_model.bin
-mv ./bert-base-uncased/bert-base-uncased-pytorch_model.bin ./bert-base-uncased/pytorch_model.bin
 
 export SQUAD_DIR=./data/
-export MODEL_PATH=./bert-base-uncased
+export MODEL_PATH=/pretrain_model/bert-base-uncased
 
 python run_squad.py \
   --model_type bert \
