@@ -7,9 +7,20 @@ spec:
   backoffLimit: 5
   template:
     spec:
+      initContainers:
+      - name: prepare-pretrain_model
+        # hub.data.wust.edu.cn:30880/ygtao/mnist-dataset:v1.0
+        image: $DATASET_IMAGE
+        command: ['sh', '-c', 'mv /pretrain_model/* /tempdir;echo the init container is used to prepare pretrain_model for your code!']
+        volumeMounts:
+        - name: shared-pretrain_model
+          mountPath: /tempdir
       containers:
         - name: $APP_NAME-$BUILD_NUMBER
           image: $REGISTRY/$HARBOR_NAMESPACE/$APP_NAME:SNAPSHOT-$BUILD_NUMBER
+          volumeMounts:
+          - name: shared-pretrain_model
+            mountPath: /pretrain_model
           resources:
             limits:
               nvidia.com/gpu: 1
@@ -17,3 +28,6 @@ spec:
       imagePullSecrets:
        - name: $HARBOR_LOGIN_SECRET_NAME
       restartPolicy: OnFailure
+      volumes:
+      - name: shared-pretrain_model
+        emptyDir: {}
