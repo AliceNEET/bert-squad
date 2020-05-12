@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 export SQUAD_DIR=./data
-export MODEL_PATH=../pretrain_model/bert-base-uncased
+export MODEL_PATH=bert-base-uncased
+# ./pretrain_model/bert-base-uncased
 
 python run_squad.py \
   --model_type bert \
